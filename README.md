@@ -1,4 +1,4 @@
-# Stock Prediction ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+# Stock Prediction ![Alt Text]([https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif](https://cdn-icons-mp4.flaticon.com/512/7211/7211793.mp4))
 
 
  Stock Prediction Software which main usage is going to be predicitng a stock price up to 7 days forward
