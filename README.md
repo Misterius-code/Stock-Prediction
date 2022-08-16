@@ -1,4 +1,6 @@
-# Stock Prediction
+# Stock Prediction ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+
  Stock Prediction Software which main usage is going to be predicitng a stock price up to 7 days forward
 I add a requirements.txt which contains information about what I might have used in project. 
 
