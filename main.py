@@ -7,13 +7,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import yfinance as yf
 from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, LSTM, Dropout
+from tensorflow.keras import Sequential
+from tensorflow.python.keras.layers import Dense, LSTM, Dropout
 from flask import Flask, render_template, request
 
 
 def preprocessking(my_data):
-
 
     X = my_data[['Open', 'High', 'Low', 'Close']].tail(-1)
     Y = my_data[['Open', 'High', 'Low', 'Close']].head(-1)
@@ -67,13 +66,14 @@ def preprocessking(my_data):
 
 
 def gatherdata(ticker):
+    # Gather data from 1/1/2017 till today
     start = datetime.datetime(2017, 1, 1)
-    #end =datetime.datetime(2022, 1, 6)
+    # Download a stock data from Yahoo
     end = datetime.date.today()
     stock = yf.download(ticker, start, end)
-
-
+    #Return all the values from stock
     return stock
+
 def lstmmodel(stock):
     # scale data
 
@@ -231,10 +231,14 @@ def home():
 @app.route('/ticker', methods=['POST'])
 def ticker():
     if request.method == 'POST':
+        #Take desired ticker from search bar
         ticker= request.form['search']
+        #Collection of ticker data such as Price , open ,close
         dataCollection = gatherdata(ticker)
         datainfo(dataCollection)
+        # Create charts for given stock
         datavisualization(dataCollection)
+        # Preprocess data by removing unnecessary information
         lrModel=preprocessking(dataCollection)
         lstModel=lstmmodel(dataCollection)
         ystrDate=dataCollection.reset_index()
